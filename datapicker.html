@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body><script type="text/javascript">
+
+var app = angular.module("myapp", []);
+app.controller("myCtrl", function ($scope) {
+$scope.names = [{
+"genderid": 1,
+"type": "Male"
+}, {
+"genderid": 2,
+"type": "Female"
+}];
+$scope.qua=[{
+  "quaid":1,
+  "qualification":"BCA"
+},{
+  "quaid":2,
+  "qualification":"BSC"
+},{
+  "quaid":3,
+  "qualification":"MSC"
+},
+{
+"quaid":4,
+  "qualification":"MCA"
+}
+];
+$scope.max=function()
+{
+  $scope.today=new Date();
+  $scope.year=$scope.today.getFullYear();
+  $scope.month=$scope.today.getMonth()+1;
+  $scope.day=$scope.today.getDate();
+  if($scope.day<10)
+    $scope.dd='0'+'$scope.day';
+    
+  if($$cope.month<10)
+    $scope.mm='0'+$scope.month;
+  $scope.date=$scope.dd+'-'+$scope.mm+'-'+$scope.year;
+
+}
+});
+</script>
+<p ng-app="myapp" ng-controller="myCtrl">$scope.date</p>
+</body>
+</html>

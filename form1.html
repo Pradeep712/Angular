@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+AngularJs ng-pattern Email Validation Example
+</title>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<style type="text/css">
+.container{
+	margin-top: 40px;
+	
+
+}
+	
+</style>
+
+<script src="valid.js"></script>
+<!-- <script type="text/javascript">
+var app = angular.module('ngpatternApp', []);
+app.controller('ngpatternCtrl', function ($scope) {
+$scope.sendForm = function () {
+$scope.msg = "Form Validated";
+};
+});
+</script> -->
+</head>
+<body class="container">
+<div ng-app="myapp" ng-controller="myCtrl">
+
+<form name="myform" method="post" novalidate  ng-submit="send(myform)">
+
+Name:<input type="text" class="form-control" name="nme" ng-model="user.uname" ng-pattern="/^[A-Za-z]+$/" required />
+<span style="color:Red" ng-show="submit && myform.nme.$error.required"> Required! </span>
+<span style="color:Red" ng-show="myform.nme.$dirty&&myform.nme.$error.pattern">Please Enter Valid name</span>
+<br /><br />
+Email:<input type="text" class="form-control" name="email" ng-model="mail" ng-pattern="/^([A-Za-z_\-\.])[^0-9]+\@([A-Za-z])+\.([A-Za-z]{2,4})$/" required />
+<span style="color:Red" ng-show="myform.email.$error.required"> Required! </span>
+<span style="color:Red" ng-show="myform.email.$dirty&&myform.email.$error.pattern">Please Enter Valid Email id</span>
+<br />
+<div>
+
+Gender:<span style="color:Red" ng-show="myform.gender.$error.required"> Select any one option </span>
+<!-- <input type="radio" name="gender" value="Male" ng-model="selectedPerson" required/>Male
+<input type="radio" name="gender" value="Female" ng-model="selectedPerson" required/>Female
+ -->
+<div ng-repeat="gender in names">
+<input type="radio" name="gender" value="{{gender.type}}" ng-model="$parent.selectedPerson" required/>
+{{gender.type}}
+ <span style="color:Red">{{msg}}</span>
+</div> 
+
+<br />
+
+Qualification:<select name="qua" class="form-control" ng-model="degree" required>
+	<option value="">--Select Qualification--</option>
+<option ng-repeat="option in qua"  value="{{option.qualification}}">{{option.qualification}}</option>
+</select>
+<span style="color:Red" ng-show="myform.qua.$error.required"> Select any one option </span>
+<br>
+<br>
+
+ DOB:<input type="date" class="form-control" name="birth" ng-model="DOB" min={{mindate}} max ={{maxdate}} required />
+ <span style="color:Red" ng-show="myform.birth.$error.required"> select the date </span><br><br>
+ comment:<textarea ng-model="comments" name="cmd" class="form-control" required></textarea>
+ <span style="color:Red"   ng-show="myform.cmd.$error.required">required </span><br><br>
+
+<input type="submit" name="submit" value=submit /><br /><br />
+
+</form>
+ <!-- <table  class="table table-striped">
+ 
+ 	<tr ><td >Username:</td><td>{{user}}</td></tr>
+ 	<tr><td>Email:</td><td >{{email}}</td></tr>
+ 	<tr><td>gender:</td><td>{{gen}}</td></tr>
+ 	<tr><td>Qualification:</td><td>{{edu}}</td></tr>
+ 	<tr><td>Date of birth:</td><td>{{dob}}</td></tr>
+ 	<tr><td>comment:</td><td>{{cmnt}}</td></tr>
+ </table> -->
+ 
+ <table class="table table-striped">
+ 	<tr>
+ 		<th>Username</th>
+ 		<th>Email</th>
+ 		<th>Gender</th>
+ 		<th>Qualification</th>
+ 		<th>Date of Birth</th>
+ 		<th>Comments</th>
+ 	</tr>
+ 	<tr ng-repeat="x in unames">
+ 		<td>{{x.name}}</td>
+ 		<td>{{x.mail}}</td>
+ 		<td>{{x.gender}}</td>
+ 		<td>{{x.qualification}}</td>
+ 		<td>{{x.dob}}</td>
+ 		<td>{{x.comments}}</td>
+ 		<td ng-click="removeItem($index)">&times;</td>
+ 	</tr>
+
+ </table>
+
+ 	<p style="color:Red">{{errortext}}</p>
+
+</div>
+</body>
+</html>
+
+});

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="valid.js"></script>
+	<style type="text/css">
+		 .container
+		 { margin-top: 80Px;
+		 	margin-right: 60px;
+    width: 60%;
+  
+    padding: 10px;
+}
+	</style>
+    
+</head>
+<body>
+<div ng-app="myapp" ng-controller="myctrl">
+	<form name=myform  novalidate>
+		<!-- <p>{{msg}}</p>
+ -->
+Name:<input type="text" name="nme" ng-pattern="/^[a-zA-Z]{10}/" required><p ng-show="myform.nme.$error.required">The field is empty</p>
+<p ng-show="myform.nme.$dirty&&myform.nme.$error.pattern">Enter the valid name</p>
+<br>
+DOB:<input type="date"  class="form-control" name="birth"><span ng-show=""></span>
+Gender:<input type="radio" name="gen" >M
+<input type="radio" ng-model="gen" name="gen">F
+
+Qualification:<select  class="form-control"  ng-model="qua" name="qua">
+	<option>BSC</option>
+	<option>BCA</option>
+	<option>MSC</option>
+	<option>MCA</option>
+	<option>BE</option>
+	<option>ME</option>
+</select>
+
+
+Comment:<textarea  class="form-control"></textarea>
+
+	<button type="submit">submit</button>
+
+</table>
+</form>
+
+</div>
+</body>
+</html>

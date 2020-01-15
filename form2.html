@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+AngularJs ng-pattern Email Validation Example
+</title>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<script src="valid.js"></script>
+<!-- <script type="text/javascript">
+var app = angular.module('ngpatternApp', []);
+app.controller('ngpatternCtrl', function ($scope) {
+$scope.sendForm = function () {
+$scope.msg = "Form Validated";
+};
+});
+</script> -->
+</head>
+<body>
+<div ng-app="myapp" ng-controller="myCtrl as pt">
+
+<form name="myform" novalidate  ng-submit="send()">
+Name:<input type="text"  name="nme" ng-model="uname" ng-pattern="/^[A-Za-z]+$/" required />
+<span style="color:Red" ng-show="myform.nme.$error.required"> Required! </span>
+<span style="color:Red" ng-show="myform.nme.$dirty&&myform.nme.$error.pattern">Please Enter Valid name</span>
+<br /><br />
+Email:<input type="text"  name="email" ng-model="mail" ng-pattern="/^([A-Za-z_\-\.])[^0-9]+\@([A-Za-z])+\.([A-Za-z]{2,4})$/" required />
+<span style="color:Red" ng-show="myform.email.$error.required"> Required! </span>
+<span style="color:Red" ng-show="myform.email.$dirty&&myform.email.$error.pattern">Please Enter Valid Email id</span>
+<br />
+<div>
+
+Gender:<div ng-repeat="gender in names">
+<input type="radio" name="gender" value="{{gender.type}}" ng-model="gender" required/>
+{{gender.type}}
+<!-- <span style="color:Red">{{msg}}</span> -->
+</div>
+<span style="color:Red" ng-show="myform.gender.$error.required"> Select any one option </span>
+<br />
+Qualification:<select name="qua" ng-model="degree" required>
+	<option value="">--Select Qualification--</option>
+<option ng-repeat="option in qua" value="{{option.quaid}}">{{option.qualification}}</option>
+</select>
+<span style="color:Red" ng-show="myform.qua.$error.required"> Select any one option </span>
+<br>
+<br>
+
+ DOB:<input type="date"  name="birth" ng-model="DOB" min={{mindate}} max ={{maxdate}} required />
+ <span style="color:Red" ng-show="myform.birth.$error.required"> select the date </span>
+
+ <button type="submit" >Submit</button><br /><br />
+
+</form>
+ <table>
+ 
+ 	<tr ><td >Username:</td><td ng-repeat="x in unames" >{{x}}</td></tr>
+ 	<tr><td>Email:</td><td ng-repeat="y in emails">{{y}}</td></tr>
+ 	<tr><td>gender</td><td ng-repeat="z in genders">{{y}}</td></tr>
+ </table>
+ 
+ </table>
+ 	<p>{{errortext}}</p>
+
+</div>
+</body>
+</html>
+

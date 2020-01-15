@@ -1,0 +1,74 @@
+<html ng-app="myApp">
+<head>
+<title>Attence list</title>  
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script> 
+<script type="text/javascript">  
+  var app = angular.module("myApp", []);
+  app.controller('myCtrl',function($scope){  
+
+  $scope.person=[
+  {name:"Ajay",present:"22",absent:"3"},
+  {name:"karthi",present:"24",absent:"1"}
+  ];
+  
+  $scope.removeData=function(x)
+  {
+	$scope.errortext = "";
+	$scope.person.splice(x, 1);
+  }
+
+  $scope.addData=function()
+  {
+    
+    if($scope.person.indexOf($scope.name)==-1)
+    {
+      $scope.person.push({'name':$scope.name,'present':$scope.present,'absent':$scope.absent});
+       $scope.errortext="";
+      $scope.name="";$scope.gender="";dob.value="";$scope.email="";$scope.qualification="";
+      $scope.comments="";
+    }
+  }
+});      
+</script>
+</head>
+<body bgcolor="lightblue">
+<h1 align="center">ATTENDANCE LIST</h1>
+
+<div ng-app='myApp' ng-controller='myCtrl'>
+  <form name="form"  autocomplete="false">  
+  <table cellspacing="20" align="center">  
+  <tr>  
+    <td align="right" style="color:blue">Name:</td>
+    <td><input type="text" id="name" name="name"  ng-model="name"/></td>
+  <tr>
+  <td align="right" style="color:blue">Total Number of Days Present:</td>
+  <td><input type="text" name="present" id="present" ng-model="present"/></td>
+  </tr>
+  <tr>
+    <td span style="color:blue">Total Number of days Absent:</td>
+    <td><input type="text" ng-model="absent" id="absent" name="absent" ng-model="absent"/></td>
+    </tr>
+<tr>
+  <tr>  
+      <td><input type="submit" value="Submit" ng-click="addData()"/></td>  
+      <td><input type="reset" value="Clear"></td>
+  </tr> 
+  </table>
+</form>
+
+<h1><u>Absentees Entered</u></h1>
+<table border="2" cellspacing="4" cellpadding="5">
+  <tr>
+    <th>Name</th><th>Total days Present</th><th>Total days Absent</th>
+  </tr>
+  <tr ng-repeat="x in person">
+    <td>{{x.name}}</td>
+    <td>{{x.present}}</td>
+    <td>{{x.absent}}</td>
+    
+    <td><span ng-click="removeData($index)" >&times;</span></td>
+  </tr> 
+</table>
+</div>
+</body>
+</html>
