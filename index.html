@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+    <!-- <script>
+    var app = angular.module('myApp',[]);
+    app.controller('myCtrl',function($scope){
+        $scope.firstName = "Pradeep";
+        $scope.lastName = "Rajan";
+    });    
+    </script> -->
+    <!-- <body ng-app="myApp">
+        <pradeep></pradeep>
+        <script>
+        var app=angular.module("myApp",[]);
+        app.directive("pradeep",function(){
+            return {
+                template: "<h1>Making MyDay Special</h1>"
+            };
+        });
+        </script>
+    </body> -->
+    <body>
+        <div ng-app="" ng-init="names=[{name:'Goa',country:'India'}, {name:'Hege',country:'norway'}]">
+            <ol>
+                <li ng-repeat="x in names">
+                    {{x.name +', '+x.country}}
+                </li>
+            </ol>
+        </div>
+
+        <!-- <div ng-app="">
+            <p>Name: <input type="text" ng-Model="name" /> </p>
+            <h1>{{name}}</h1>
+        </div> -->        
+        <!-- <div ng-app="myApp" ng-controller="myCtrl">
+            FirstName: <input type="text" ng-model="firstName"><br><br>
+            LastName: <input type="text" ng-model="lastName"><br><br>
+            Fullname: {{firstName+" "+lastName}}
+        </div> -->
+
+        <!-- <div ng-app="" ng-init="person=['raj','ravi','logu','mano']">
+            <ul>
+                <li ng-repeat="name in person">
+                    {{name}}
+                </li>
+            </ul>
+        </div> -->
+    </body>
+</html>
